@@ -2,93 +2,553 @@
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Meu perfil acadêmico</title>
+    <meta
+      name="description"
+      content="Perfil acadêmico de Jean Douglas Toledo Rodrigues Junior, estudante de Análise e Desenvolvimento de Sistemas com foco em desenvolvimento web, inteligência artificial e soluções digitais."
+    />
+    <meta
+      name="keywords"
+      content="Jean Douglas, perfil acadêmico, Análise e Desenvolvimento de Sistemas, desenvolvimento web, tecnologia, inteligência artificial"
+    />
+    <meta name="theme-color" content="#17365d" />
+    <meta property="og:title" content="Jean Douglas | Perfil Acadêmico" />
+    <meta
+      property="og:description"
+      content="Estudante de Análise e Desenvolvimento de Sistemas com interesse em desenvolvimento web, IA e ciência de dados."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <title>Jean Douglas | Perfil Acadêmico</title>
     <style>
-      body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background-color: #f4f6f8;
-        color: #1f1f1f;
+      :root {
+        --bg: #f4f7fb;
+        --panel: #ffffff;
+        --panel-soft: #edf5ff;
+        --primary: #17365d;
+        --primary-dark: #102949;
+        --accent: #2e7d32;
+        --accent-soft: #e8f5e9;
+        --text: #1e2430;
+        --muted: #56657a;
+        --border: #dfe7f1;
+        --shadow: rgba(23, 54, 93, 0.12);
+        --highlight: #c62828;
       }
 
-      main {
-        width: 80%;
-        max-width: 800px;
-        margin: 40px auto;
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background: linear-gradient(180deg, #edf4fb 0%, var(--bg) 100%);
+        color: var(--text);
+        line-height: 1.6;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .container {
+        width: min(1120px, 90%);
+        margin: 0 auto;
+      }
+
+      .topbar {
+        background: rgba(23, 54, 93, 0.96);
+        backdrop-filter: blur(8px);
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        box-shadow: 0 6px 18px rgba(16, 41, 73, 0.15);
+      }
+
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        min-height: 72px;
+      }
+
+      .brand {
+        color: #ffffff;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        font-size: 1.05rem;
+      }
+
+      .nav-menu {
+        display: flex;
+        align-items: center;
+        gap: 1.2rem;
+        flex-wrap: wrap;
+      }
+
+      .nav-menu a {
+        color: #e6eefb;
+        font-size: 0.96rem;
+        transition: opacity 0.2s ease;
+      }
+
+      .nav-menu a:hover,
+      .nav-menu a:focus {
+        opacity: 0.8;
+      }
+
+      .hero {
+        background: linear-gradient(135deg, var(--primary) 0%, #214f7d 100%);
+        color: #ffffff;
+        padding: 5.5rem 0 4rem;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.5fr 0.9fr;
+        gap: 2rem;
+        align-items: center;
+      }
+
+      .eyebrow {
+        display: inline-block;
+        margin: 0 0 1rem;
+        font-size: 0.76rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #dfeaf9;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 999px;
+        padding: 0.45rem 0.9rem;
       }
 
       h1 {
-        color: #17365d;
-        text-align: center;
+        margin: 0;
+        font-size: clamp(2.3rem, 4vw, 4rem);
+        line-height: 1.1;
       }
 
-      .perfil {
-        background-color: #ffffff;
-        padding: 24px;
-        border: 2px solid #d9dde3;
-        border-radius: 10px;
-        margin-bottom: 20px;
+      .lead {
+        margin: 1rem 0 0;
+        font-size: 1.08rem;
+        max-width: 620px;
+        color: #dfebff;
       }
 
-      .objetivos {
-        background-color: #eef5ff;
-        padding: 24px;
-        border: 2px solid #b6cee8;
-        border-radius: 10px;
+      .hero-card {
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        border-radius: 22px;
+        padding: 1.6rem;
+        box-shadow: 0 24px 35px rgba(4, 15, 29, 0.22);
+      }
+
+      .stat-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        gap: 1rem;
+      }
+
+      .stat-item {
+        padding: 1rem 1.1rem;
+        border-radius: 14px;
+        background: rgba(255, 255, 255, 0.04);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+      }
+
+      .stat-label {
+        color: #dfeaf9;
+        display: block;
+        margin-bottom: 0.35rem;
+        font-size: 0.82rem;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+
+      .stat-value {
+        font-size: 1.3rem;
+        font-weight: 700;
+      }
+
+      main {
+        padding: 3rem 0 4rem;
+      }
+
+      .section {
+        margin-top: 1.5rem;
+      }
+
+      .card-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1.5rem;
+      }
+
+      .card {
+        background: var(--panel);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        padding: 2rem;
+        box-shadow: 0 10px 25px rgba(34, 51, 74, 0.04);
+      }
+
+      .card.soft {
+        background: var(--panel-soft);
+        border-color: #cfe0f8;
       }
 
       h2 {
-        color: #2e7d32;
+        margin: 0 0 1rem;
+        color: var(--accent);
+        font-size: clamp(1.6rem, 2vw, 2.1rem);
       }
 
-      .destaque {
-        color: #c62828;
-        font-weight: bold;
+      .highlight {
+        color: var(--highlight);
+        font-weight: 700;
       }
 
-      p {
-        color: #333333;
-      }
-
+      p,
       li {
-        color: #17365d;
+        color: var(--muted);
+        line-height: 1.7;
+        font-size: 1rem;
+      }
+
+      ul {
+        margin: 1rem 0 0;
+        padding-left: 1.2rem;
+      }
+
+      .tag-list {
+        list-style: none;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.7rem;
+        padding: 0;
+        margin-top: 1.2rem;
+      }
+
+      .tag-list li {
+        background: #edf5ff;
+        color: var(--primary);
+        border: 1px solid #d2e0f7;
+        border-radius: 999px;
+        padding: 0.6rem 0.9rem;
+        font-weight: 700;
+      }
+
+      .interest-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.85rem;
+        margin-top: 1rem;
+      }
+
+      .interest-item {
+        background: var(--accent-soft);
+        color: var(--primary);
+        border: 1px solid #cfe5d0;
+        border-radius: 12px;
+        padding: 1rem 0.8rem;
+        text-align: center;
+        font-weight: 700;
+      }
+
+      footer {
+        padding: 0 0 2.5rem;
+      }
+
+      .footer-card {
+        background: var(--primary-dark);
+        color: #edf5ff;
+        padding: 1.5rem 2rem;
+        border-radius: 18px;
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+
+      .footer-card a {
+        color: #ffffff;
+        font-weight: 700;
+      }
+
+      .social-links {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+      }
+
+      .social-links a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        padding: 0;
+        transition: transform 0.2s ease, background 0.2s ease;
+      }
+
+      .social-links a:hover,
+      .social-links a:focus {
+        transform: translateY(-2px);
+        background: rgba(255, 255, 255, 0.14);
+      }
+
+      .social-links svg {
+        width: 18px;
+        height: 18px;
+        fill: currentColor;
+      }
+
+      .whatsapp-float {
+        position: fixed;
+        left: 20px;
+        bottom: 20px;
+        z-index: 1000;
+        width: 62px;
+        height: 62px;
+        border-radius: 50%;
+        background: #25d366;
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 12px 24px rgba(37, 211, 102, 0.35);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+      }
+
+      .whatsapp-float svg {
+        width: 28px;
+        height: 28px;
+        fill: currentColor;
+      }
+
+      .whatsapp-float:hover,
+      .whatsapp-float:focus {
+        transform: translateY(-3px) scale(1.03);
+        box-shadow: 0 16px 28px rgba(37, 211, 102, 0.4);
+      }
+
+      @media (max-width: 760px) {
+        .nav {
+          flex-direction: column;
+          justify-content: center;
+          padding: 1rem 0;
+          gap: 0.8rem;
+        }
+
+        .nav-menu {
+          justify-content: center;
+        }
+
+        .hero-grid,
+        .card-grid,
+        .interest-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero {
+          padding-top: 4.5rem;
+        }
+
+        .card {
+          padding: 1.35rem 1rem;
+        }
+
+        .footer-card {
+          padding: 1.2rem 1rem;
+        }
       }
     </style>
   </head>
   <body>
-    <main>
-      <h1>Meu perfil acadêmico</h1>
-
-      <div class="perfil">
-        <h2>Quem sou eu</h2>
-        <p class="destaque">Me chamo Jean Douglas Toledo Rodrigues Junior.</p>
-        <p>
-          Já sou Técnico em Desenvolvimento de Sistemas pelo SENAI de Santa
-          Catarina e estou buscando a graduação como estudante da 1ª fase do
-          curso Tecnólogo em Análise e Desenvolvimento de Sistemas pela
-          Faculdade Municipal da Palhoça (FMP), para aperfeiçoar meus
-          conhecimentos e habilidades na área da tecnologia da informação, com
-          foco em desenvolvimento de software e soluções digitais.
-        </p>
-        <ul>
-          <li>HTML, CSS e JavaScript</li>
-          <li>Front-End (React, Vue.js, etc.)</li>
-          <li>Back-End (Node.js, Python, Java, etc.)</li>
-        </ul>
+    <header class="topbar">
+      <div class="container nav" aria-label="Navegação principal">
+        <a class="brand" href="#inicio">Jean Douglas</a>
+        <nav class="nav-menu" aria-label="Menu principal">
+          <a href="#sobre">Sobre</a>
+          <a href="#formacao">Formação</a>
+          <a href="#objetivos">Objetivos</a>
+          <a href="#contato">Contato</a>
+        </nav>
       </div>
+    </header>
 
-      <div class="objetivos">
-        <h2>O que quero aprender</h2>
-        <p>
-          Desejo aprender mais sobre ciência de dados e análise de informações.
-          Também quero aprimorar minhas habilidades em machine learning e
-          inteligência artificial, bem como RAG, (Geração Aumentada por
-          Recuperação), para poder aplicar esses conhecimentos em projetos
-          práticos e contribuir para o desenvolvimento de soluções inovadoras na
-          área de tecnologia.
-        </p>
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">Análise e Desenvolvimento de Sistemas</p>
+          <h1>Transformando ideias em soluções digitais.</h1>
+          <p class="lead">
+            Sou Jean Douglas Toledo Rodrigues Junior, estudante de tecnologia em formação com foco em
+            desenvolvimento web, inteligência artificial e inovação aplicada à área de sistemas.
+          </p>
+        </div>
+
+        <aside class="hero-card" aria-label="Resumo profissional">
+          <ul class="stat-list">
+            <li class="stat-item">
+              <span class="stat-label">Formação</span>
+              <span class="stat-value">Técnico + Graduação</span>
+            </li>
+            <li class="stat-item">
+              <span class="stat-label">Foco</span>
+              <span class="stat-value">Desenvolvimento Web</span>
+            </li>
+            <li class="stat-item">
+              <span class="stat-label">Interesse</span>
+              <span class="stat-value">IA e Dados</span>
+            </li>
+          </ul>
+        </aside>
       </div>
+    </section>
+
+    <main class="container">
+      <section class="section" id="sobre">
+        <div class="card-grid">
+          <article class="card">
+            <h2>Quem sou eu</h2>
+            <p class="highlight">Técnico em Desenvolvimento de Sistemas e estudante de tecnologia em formação.</p>
+            <p>
+              Já concluí a formação técnica em Desenvolvimento de Sistemas pelo SENAI de Santa Catarina e
+              atualmente estou cursando Análise e Desenvolvimento de Sistemas pela Faculdade Municipal da
+              Palhoça. Meu objetivo é crescer profissionalmente com foco em desenvolvimento de software,
+              usabilidade, qualidade de código e soluções digitais eficientes.
+            </p>
+            <ul class="tag-list" aria-label="Tecnologias e áreas de estudo">
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>JavaScript</li>
+              <li>React</li>
+              <li>Node.js</li>
+              <li>Python</li>
+            </ul>
+          </article>
+
+          <article class="card soft" id="formacao">
+            <h2>Formação</h2>
+            <ul>
+              <li>Técnico em Desenvolvimento de Sistemas — SENAI/SC</li>
+              <li>Graduação em andamento — Análise e Desenvolvimento de Sistemas — FMP</li>
+              <li>Estudo contínuo em desenvolvimento web, lógica de programação e ciência aplicada à tecnologia</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="objetivos">
+        <div class="card-grid">
+          <article class="card soft">
+            <h2>Objetivos profissionais</h2>
+            <ul>
+              <li>Ampliar conhecimentos em ciência de dados e análise de informações.</li>
+              <li>Explorar inteligência artificial, machine learning e aplicação prática de IA.</li>
+              <li>Desenvolver projetos que integrem tecnologia, experiência do usuário e inovação.</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h2>Áreas de interesse</h2>
+            <div class="interest-grid" aria-label="Áreas de interesse">
+              <div class="interest-item">Desenvolvimento Web</div>
+              <div class="interest-item">Front-End</div>
+              <div class="interest-item">Back-End</div>
+              <div class="interest-item">Inteligência Artificial</div>
+            </div>
+          </article>
+        </div>
+      </section>
     </main>
+
+    <a
+      class="whatsapp-float"
+      href="https://wa.me/5548999563416?text='Olá+tudo+bem?+Quero+saber+mais+sobre+seus+serviços...'"
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Falar no WhatsApp"
+      title="Falar no WhatsApp"
+    >
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M20.52 3.48A11.86 11.86 0 0 0 12.06 0C5.5 0 .16 5.34.16 11.9c0 2.1.55 4.14 1.59 5.94L0 24l6.34-1.66a11.9 11.9 0 0 0 5.72 1.73h.01c6.56 0 11.9-5.34 11.9-11.9 0-3.18-1.24-6.17-3.46-8.4Zm-8.46 18.33h-.01a9.85 9.85 0 0 1-5.02-1.37l-.36-.21-3.76.98 1-3.65-.23-.38A9.8 9.8 0 0 1 2.2 11.9a9.83 9.83 0 0 1 16.98-6.96A9.82 9.82 0 0 1 12.06 22.2Zm5.38-7.34c-.29-.15-1.73-.85-2-.95-.27-.1-.46-.15-.66.15-.2.3-.77.95-.94 1.14-.17.2-.35.22-.64.08-.29-.15-1.22-.45-2.32-1.44-.86-.77-1.44-1.73-1.6-2.02-.17-.29-.03-.44.13-.58.13-.13.29-.35.44-.52.15-.17.2-.3.3-.5.1-.2.05-.38-.02-.52-.08-.15-.66-1.61-.9-2.2-.24-.58-.48-.5-.66-.51l-.56-.01c-.2 0-.52.08-.8.38-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.22 3.08c.16.2 2.1 3.2 5.08 4.48.71.31 1.27.49 1.7.63.71.23 1.36.2 1.88.12.57-.08 1.73-.7 1.97-1.38.25-.68.25-1.26.17-1.38-.09-.12-.27-.2-.57-.35Z"/>
+      </svg>
+    </a>
+
+    <footer id="contato">
+      <div class="container footer-card">
+        <div>
+          <strong>Jean Douglas Toledo Rodrigues Junior</strong><br />
+          Estudante de Análise e Desenvolvimento de Sistemas
+        </div>
+        <div class="social-links" aria-label="Redes sociais">
+          <a href="https://instagram.com/jeandouglasjr" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.5A5.5 5.5 0 1 1 6.5 13 5.5 5.5 0 0 1 12 7.5Zm0 2A3.5 3.5 0 1 0 15.5 13 3.5 3.5 0 0 0 12 9.5Zm5.25-3.25a1.25 1.25 0 1 1-1.25 1.25 1.25 1.25 0 0 1 1.25-1.25Z"/>
+            </svg>
+          </a>
+          <a href="https://fb.com/jeandouglasjr" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M13.5 22v-8h2.7l.4-3.2h-3.1V7.2c0-.9.3-1.6 1.7-1.6H17V2.7c-.3-.1-1.3-.2-2.5-.2-2.4 0-4 1.5-4 4.2v2.3H8v3.2h2.5v8h3Z"/>
+            </svg>
+          </a>
+          <a href="https://linkedin.com/in/jeandouglasjr" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M6.94 8.5A1.56 1.56 0 1 1 6.9 5.4a1.56 1.56 0 0 1 .04 3.1ZM5.5 10h2.9v9H5.5zm5.1 0h2.8v1.2h.1c.4-.8 1.5-1.6 3.1-1.6 3.3 0 3.9 2.2 3.9 5v5.9h-2.9v-5.4c0-1.3 0-3-1.8-3s-2.1 1.4-2.1 2.9v5.5H10.6Z"/>
+            </svg>
+          </a>
+          <a href="mailto:suporte@jeandouglas.com.br" aria-label="E-mail">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M3 6.5A2.5 2.5 0 0 1 5.5 4h13A2.5 2.5 0 0 1 21 6.5v11A2.5 2.5 0 0 1 18.5 20h-13A2.5 2.5 0 0 1 3 17.5zm2.1-.5 6.9 5.3 6.9-5.3H5.1Zm14.4 1.5-7.2 5.5a1 1 0 0 1-1.2 0L4.5 7.5v10A.5.5 0 0 0 5 18h14a.5.5 0 0 0 .5-.5z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Jean Douglas Toledo Rodrigues Junior",
+        "jobTitle": "Estudante de Análise e Desenvolvimento de Sistemas",
+        "description": "Estudante de tecnologia com foco em desenvolvimento web, inteligência artificial e inovação digital.",
+        "alumniOf": [
+          "SENAI de Santa Catarina",
+          "Faculdade Municipal da Palhoça"
+        ],
+        "knowsAbout": [
+          "HTML",
+          "CSS",
+          "JavaScript",
+          "React",
+          "Node.js",
+          "Python",
+          "Inteligência Artificial"
+        ]
+      }
+    </script>
   </body>
 </html>
